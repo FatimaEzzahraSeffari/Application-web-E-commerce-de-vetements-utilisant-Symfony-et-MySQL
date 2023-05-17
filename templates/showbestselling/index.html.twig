@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="css/showarticle.css">
+<link rel="stylesheet" type="text/css" href="css/affichage.css">
+
+
+{% block body %}
+<style>
+.delete-btn {
+  background-color: #ff0000; /* couleur de fond rouge */
+  color: #ffffff; /* couleur de texte blanc */
+  border: none; /* pas de bordure */
+  padding: 10px 20px; /* espacement intérieur */
+  font-size: 16px; /* taille de police */
+  cursor: pointer; /* curseur en forme de main */
+  border-radius: 4px; /* coins arrondis */
+}
+.delete-btn1 {
+  background-color: #248827; /* couleur de fond rouge */
+  color: #ffffff; /* couleur de texte blanc */
+  border: none; /* pas de bordure */
+  padding: 10px 20px; /* espacement intérieur */
+  font-size: 16px; /* taille de police */
+  cursor: pointer; /* curseur en forme de main */
+  border-radius: 4px; /* coins arrondis */
+}
+
+</style>
+<nav class="navbar"></nav>
+<script src="js/affichage.js"></script>
+<h1 id="title">Best selling Articles Table</h1>
+
+<table id="customers">
+  <tr>
+    <th>name</th>
+    <th>description</th>
+    <th>price</th>
+    <th>image</th>
+      <th colspan="2">Actions</th>
+  </tr>
+  <tr>
+  {% for post in posts %}
+    <td>{{post.name}}</td>
+    <td>{{post.description}}</td>
+     <td>{{post.price}}</td>
+    <td>{{post.image}}</td>
+     
+  
+  
+  <td>
+   
+    
+    <a href="{{ path('app_confirmdelbest', { 'id': post.id }) }}" class="delete-btn">Delete</a>
+        <a href={{path('app_editbestselling',{id:post.id})}}><input class="delete-btn1" type="button" value="edit"</a>
+    </td>
+    </tr>
+     {% endfor %}
+</table>
+{% endblock %}

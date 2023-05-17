@@ -1,0 +1,78 @@
+<link rel="stylesheet" type="text/css" href="css/nav.css">
+<link rel="stylesheet" type="text/css" href="css/home.css">
+
+<nav class="navbar"></nav>
+<script src="js/nav.js"></script>
+
+{% block body %}
+ <ul class="links-container">
+  <li class="link-item"> 
+    
+       <a href="/main" class="link">home</a>
+    {% for category in categories %}
+     <a href="{{ path('app_show_produit_by_category', { 'category': category.name }) }}" class="link">{{ category.name }}</a>
+    {% endfor %}
+     <a href="{{ path('app_show_produit_by_category') }}" class="link">All</a>
+    </li>
+    
+  </ul>
+<header class="hero-section">
+    <div class="content">
+        <img src="img/light-logo.png" class="logo" alt="">
+        <p class="sub-heading">best fashion collection of all time</p>
+          <p class="sub-heading">your elegant our priority</p>
+    </div>
+</header>
+
+<section class="product">
+    <h2 class="product-category">best selling</h2>
+    
+<button class="pre-btn"><img src="img/arrow.png" alt=""></button>
+<button class="nxt-btn"><img src="img/arrow.png" alt=""></button>
+    <div class="product-container">
+    <script src="js/home.js"></script>
+      {% for bestsellings in bestselling %}
+    <div class="product-card">
+        <div class="product-image">
+       
+            <span class="discount-tag">50% off</span>
+             <img src="{{ bestsellings.image }}" alt="{{ bestsellings.name }}" class="product-thumb" alt="">
+            <button class="card-btn">add to whislist</button>
+        </div>
+        <div class="product-info">
+            <h2 class="product-brand">{{ bestsellings.name }}</h2>
+            <p class="product-short-des">{{ bestsellings.description }}</p>
+            <span class="price">{{ bestsellings.price }}</span><span class="actual-price">$40</span>
+        </div>
+    </div>
+    {% endfor %}
+  
+</section>
+
+
+<!-- collections -->
+<section class="collection-container">
+
+       <a href="{{ path('app_show_produit_by_category', { 'category': 'womenapparels' }) }}" class="collection">
+        <img src="img/women-collection.png" alt="">
+        <p class="collection-title">women <br> apparels</p>
+    </a>
+   
+    <a href="{{ path('app_show_produit_by_category', { 'category': 'manapparels' }) }}" class="collection">
+    <img src="img/men-collection.png" alt="">
+    <p class="collection-title">men <br> apparels</p>
+</a>
+   <a href="{{ path('app_show_produit_by_category', { 'category': 'accessoriesapparels' }) }}" class="collection">
+        <img src="img/accessories-collection.png" alt="">
+        <p class="collection-title">accessories</p>
+    </a>
+</section>
+
+
+    {% endblock  %}
+  <footer></footer>
+
+<script src="js/footer.js"></script>
+
+
+

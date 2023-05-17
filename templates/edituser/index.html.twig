@@ -1,0 +1,58 @@
+
+<link rel="stylesheet" href="{{ asset('css/edit.css') }}">
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+
+
+
+{% block body %}
+<!DOCTYPE html>
+<!-- Coding by CodingNepal | www.codingnepalweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Login and Registration Form in HTML & CSS | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+       
+    <div class="nav">
+ <img src="../img/dark1-logo.jpg" class="brand-logo" alt="" style="width: 150px; height: 100px;margin-bottom: 600px;"> 
+</div>
+    
+<div class="signup-form">
+  <div class="title">Edit Register</div>
+
+  {{ form_start(form) }}
+  <div class="input-box">
+    <i class="fas fa-user"></i>
+    {# {{ form_label(form.name) }} #}
+    {{ form_widget(form.name, {'attr': {'class': 'form-content','placeholder': 'Enter your name'}}) }}
+  </div>
+  <div class="input-box">
+    <i class="fas fa-envelope"></i>
+    {{ form_label(form.email, 'Email', {'label_attr': {'class': 'sr-only'}}) }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter your email', 'required': 'required'}}) }}
+  </div>
+  <div class="input-box">
+    <i class="fas fa-lock"></i>
+    {{ form_label(form.password, 'Password', {'label_attr': {'class': 'sr-only'}}) }}
+    {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'Enter your password', 'required': 'required'}}) }}
+  </div>
+   <div class="input-box">
+    
+    {{ form_label(form.roles, 'enter your role :', {'label_attr': {'class': 'form-check-label', 'for': 'agreeTerms'}}) }}
+    {{ form_widget(form.roles,{'attr': {'class': 'form-control', 'id': 'agreeTerms', 'required': 'required'}}) }}
+  </div>
+   
+  <button type="submit" class="btn btn-primary btn-block">update</button>
+  {{ form_end(form) }}
+  
+  
+</div>
+
+
+
+{% endblock %}

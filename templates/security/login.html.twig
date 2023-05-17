@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+
+{% block body %}
+
+
+<!DOCTYPE html>
+<!-- Coding by CodingNepal | www.codingnepalweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Login and Registration Form in HTML & CSS | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+       <div class="nav">
+ <center><img src="img/dark-logo.png" class="brand-logo" alt="" style="width: 180px; height: 100px;right:550px"> <center>
+</div>
+        <div class="text">
+          <span class="text-1"style="color: black;">Every new friend is a <br> new adventure</span>
+          <span class="text-2"style="color: black;">Let's get connected</span>
+        </div>
+      </div>
+      <div class="back">
+        <!--<img class="backImg" src="images/backImg.jpg" alt="">-->
+        <div class="text">
+          <span class="text-1"style="color: black;">Complete miles of journey <br> with one step</span>
+          <span class="text-2"style="color: black;">Let's get started</span>
+        </div>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="forms">
+
+        <div class="form-content">
+        
+          <div class="login-form">
+            <div class="title">Login</div>
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+ <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+    
+    <input placeholder="Enter your email" type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    </div>
+                  <div class="input-box">
+                <i class="fas fa-lock"></i>
+    <input type="password" name="password" placeholder="Enter your password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+</div>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+                  <div class="button input-box">
+                <input type="submit" value="Sumbit">
+              </div>
+
+    </div>
+      <div class="text sign-up-text">Don't have an account?   <li class="link-item"><a href="register" class="link">Sigup now</a></li>
+</form>
+{% endblock %}

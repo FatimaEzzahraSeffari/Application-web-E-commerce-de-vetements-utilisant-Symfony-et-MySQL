@@ -1,0 +1,60 @@
+<link rel="stylesheet" type="text/css" href="css/woman.css">
+<link rel="stylesheet" type="text/css" href="css/nav.css">
+
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}"> 
+
+{% block body %}
+
+<nav class="navbar"></nav>
+<script src="js/nav.js"></script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+ <ul class="links-container">
+ 
+      <li class="link-item"> 
+    
+     <a href="/main" class="link">home</a>
+    {% for category in categories %}
+     <a href="{{ path('app_show_produit_by_category', { 'category': category.name }) }}" class="link">{{ category.name }}</a>
+    {% endfor %}
+    <a href="{{ path('app_show_produit_by_category') }}" class="link">All</a>
+    </li>
+
+  </ul>
+  <section class="product">
+ <div class="product-container">
+{% for produit in produit %}
+    <div class="product-card">
+        <div class="product-image">
+            <span class="discount-tag">50% off</span>
+            <img src="{{ produit.img }}" alt="{{ produit.name }}" class="product-thumb" alt="">
+            <button class="card-btn">add to whislist</button>
+        </div>
+        <div class="product-info">
+            <h2 class="product-brand">{{ produit.name }}</h2>
+            <p class="product-short-des">{{ produit.description }}</p>
+            <span class="price">{{ produit.price }}</span><span class="actual-price">{{ produit.price }}</span>
+        </div>
+    </div>
+{% endfor %}
+
+
+</section>
+
+  <footer></footer>
+
+<script src="js/footer.js"></script>
+
+    {% endblock  %}
+  

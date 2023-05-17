@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/produit.css') }}"
+<link rel="stylesheet" type="text/css" href="css/showuser.css">
+<link rel="stylesheet" type="text/css" href="css/affichage.css">
+
+{% block body %}
+<!DOCTYPE html>
+<!-- Coding by CodingNepal | www.codingnepalweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Login and Registration Form in HTML & CSS | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+   </head>
+    
+<nav class="navbar"></nav>
+<script src="js/affichage.js"></script>
+   <div class="signup-form">
+<center><div class="title">Add new article</div></center>
+{{ form_start(form, {'attr': {'class': 'form'}}) }}
+ <div class="input-box">
+  {{ form_label(form.name) }}
+    {{ form_widget(form.name, {'attr': {'class': 'form-content','placeholder': 'Enter article name'}}) }}
+  </div>
+{# {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }} #}
+<div class="input-box">
+  {{ form_label(form.description) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-content','placeholder': 'Enter article decsription','style': 'background-color: #f2f2f2; border: 1px solid #ccc; padding: 10px;width:400px;height:100px'}}) }}
+  </div>
+{# {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }} #}
+ <div class="input-box">
+  {{ form_label(form.price) }}
+   
+  
+  
+  {{ form_widget(form.price, {'attr': {'class': 'form-control my-custom-class', 'placeholder': 'Enter article price in $', 'style': 'background-color: #f2f2f2; border: 1px solid #ccc; padding: 10px;width:400px;height:50px' }}) }}
+</div> 
+
+  <div class="input-box">
+  {{ form_label(form.category) }}
+ 
+    {{ form_widget(form.category, {'attr': {'class': 'form-control','placeholder': 'Enter article category','style': 'background-color: #f2f2f2; border: 1px solid #ccc; padding: 10px;width:400px;height:50px' }}) }}
+  
+</div>
+
+
+<div class="input-box">
+  {{ form_label(form.img) }}
+    {{ form_widget(form.img, {'attr': {'class': 'form-content','placeholder': 'Enter article image ','style': 'background-color: #f2f2f2; border: 1px solid #ccc; padding: 10px;width:400px;height:50px' }}) }}
+  </div>
+
+<br>
+<button type="submit" class="btn btn-primary btn-block" >Save</button>
+{{ form_end(form) }}
+{% endblock %}

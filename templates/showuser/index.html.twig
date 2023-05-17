@@ -1,0 +1,56 @@
+<link rel="stylesheet" type="text/css" href="css/showuser.css">
+<link rel="stylesheet" type="text/css" href="css/affichage.css">
+{% block body %}
+<style>
+.delete-btn {
+  background-color: #ff0000; /* couleur de fond rouge */
+  color: #ffffff; /* couleur de texte blanc */
+  border: none; /* pas de bordure */
+  padding: 10px 20px; /* espacement intérieur */
+  font-size: 16px; /* taille de police */
+  cursor: pointer; /* curseur en forme de main */
+  border-radius: 4px; /* coins arrondis */
+}
+.delete-btn1 {
+  background-color: #248827; /* couleur de fond rouge */
+  color: #ffffff; /* couleur de texte blanc */
+  border: none; /* pas de bordure */
+  padding: 10px 20px; /* espacement intérieur */
+  font-size: 16px; /* taille de police */
+  cursor: pointer; /* curseur en forme de main */
+  border-radius: 4px; /* coins arrondis */
+}
+
+</style>
+<nav class="navbar"></nav>
+<script src="js/affichage.js"></script>
+
+<h1 id="title">Users Table</h1>
+
+<table id="customers">
+  <tr>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Name</th>
+    <th>Roles</th>
+      <th colspan="2">Actions</th>
+  </tr>
+  <tr>
+  {% for post in posts %}
+    <td>{{post.email}}</td>
+    <td>{{post.password}}</td>
+     <td>{{post.name}}</td>
+     <td>{{post.roles|join(',')}}</td>
+  
+  <td>
+  
+    <a href="{{ path('app_project_confirm_delete', { 'id': post.id }) }}" class="delete-btn">Delete</a>
+ </td>
+ <td>
+<a href={{path('app_edituser',{id:post.id})}}><input  class="delete-btn1 "type="button" value="edit"</a>
+
+    </td>
+    </tr>
+     {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('path/to/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header confirm-delete-header">{{ 'Confirm Delete Message'|trans }}</div>
+                    <div class="card-body">
+                        <p class="card-text confirm-delete-text">{{ 'Are you sure you want to delete the message "%name%"?'|trans({ '%name%': message.name }) }}</p>
+                        <form method="post" action="{{ path('app_delete_msg', { 'id': message.id }) }}">
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-danger confirm-delete-btn">{{ 'Yes'|trans }}</button>
+                                <a href="{{ path('app_showmessage') }}" class="btn btn-secondary confirm-delete-btn">{{ 'No'|trans }}</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+    .confirm-delete-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.confirm-delete-text {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.confirm-delete-btn {
+    width: 100px;
+}
+
+    </style>
+{% endblock %}
